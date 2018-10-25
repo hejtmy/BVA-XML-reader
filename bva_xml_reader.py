@@ -1,6 +1,7 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 
+
 def read_xml(path):
     root = ET.parse(path).getroot()
     POINTS = ['Point', 'Front', 'Left', 'Right']
