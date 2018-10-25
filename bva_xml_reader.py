@@ -27,6 +27,6 @@ def read_xml(path):
                                         'LeftX', 'LeftY', 'RightX', 'RightY'])
     return(pd_bva, pd_phases)
 
-def preprocess_data(pd_data):
-    return(True)
 
+def save_csv(pd_bva, path):
+    pd_bva.to_csv(path, sep=";", index=False)

@@ -1,6 +1,8 @@
 ## Personal
 example_data/
 function_playground.py
+*.csv
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
