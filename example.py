@@ -1,6 +1,9 @@
+%load_ext autoreload
+%autoreload 2
+
 import matplotlib.pyplot as plt
-from bva_xml_reader import read_xml, save_csv
-from bva_sync_reader import read_sync_file
+from functions.bva_xml_reader import read_xml
+from functions.bva_sync_reader import read_sync_file
 
 pd_bva, pd_times = read_xml("example_data/example.xml")
 save_csv(pd_bva, "bva.csv")
