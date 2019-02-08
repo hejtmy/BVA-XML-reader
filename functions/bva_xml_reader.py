@@ -53,10 +53,12 @@ def read_xml_bva(path):
     #pd_bva = pd.DataFrame(mat, columns=['Timestamp', 'PointX', 'PointY', 'FrontX', 'FrontY', 'LeftX', 'LeftY', 'RightX', 'RightY'])
     return(pd_bva)
 
+
 def real_timestamp(element):
     #timestamp real is in form of 01/29/2019 10:02:45.574
     dt = datetime.strptime(element.find('TimestampReal').text, '%m/%d/%Y %H:%M:%S.%f')             
     return(float(dt.timestamp()))
-                   
+
+
 def save_csv(pd_bva, path):
     pd_bva.to_csv(path, sep=";", index=False)
