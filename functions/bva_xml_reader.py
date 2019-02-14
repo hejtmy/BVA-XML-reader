@@ -49,7 +49,7 @@ def read_xml_bva(path):
                 row.append(float(xy.find('Y').text))
             bva_mat.append(row)
         continuous_time += phase_time
-    pd_bva = pd.DataFrame(bva_mat, columns=['Timestamp', 'TimestampReal', 'PointX', 'PointY'])
+    pd_bva = pd.DataFrame(bva_mat, columns=['timestamp_bva', 'timestamp', 'position_x', 'position_y'])
     #pd_bva = pd.DataFrame(mat, columns=['Timestamp', 'PointX', 'PointY', 'FrontX', 'FrontY', 'LeftX', 'LeftY', 'RightX', 'RightY'])
     return(pd_bva)
 
