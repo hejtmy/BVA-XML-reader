@@ -31,8 +31,7 @@ def read_xml_sync(path):
 
 def read_xml_bva(path):
     root = ET.parse(path).getroot()
-    # POINTS = ['Point', 'Front', 'Left', 'Right']
-    POINTS = ['Point']
+    POINTS = ['Point', 'Front', 'Left', 'Right']
     bva_mat = []
     continuous_time = 0
     for phase in root.iter('Phase'):
@@ -45,12 +44,17 @@ def read_xml_bva(path):
             row.append(phase_datetime_real)
             for point in POINTS:
                 xy = TimestampPoint.find(point)
-                row.append(float(xy.find('X').text))
-                row.append(float(xy.find('Y').text))
+                if xy is not None:
+                    row.append(float(xy.find('X').text))
+                    row.append(float(xy.find('Y').text))
+                else:
+                    row.append(float("NaN"))
+                    row.append(float("NaN"))
             bva_mat.append(row)
         continuous_time += phase_time
-    pd_bva = pd.DataFrame(bva_mat, columns=['timestamp_bva', 'timestamp', 'position_x', 'position_y'])
-    #pd_bva = pd.DataFrame(mat, columns=['Timestamp', 'PointX', 'PointY', 'FrontX', 'FrontY', 'LeftX', 'LeftY', 'RightX', 'RightY'])
+    colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS])) #adds colnames for all the points
+    print(colnames)
+    pd_bva = pd.DataFrame(bva_mat, columns=colnames)
     return(pd_bva)
 
 
@@ -62,3 +66,6 @@ def real_timestamp(element):
 
 def save_csv(pd_bva, path):
     pd_bva.to_csv(path, sep=";", index=False)
+
+def flatten_list(list_of_lists):
+    return([item for sublist in list_of_lists for item in sublist])
