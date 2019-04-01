@@ -24,4 +24,5 @@ else:
 	output = sys.argv[2]
 
 pd_bva = read_xml_bva(path)
+#preprocess
 save_csv(pd_bva, output)
