@@ -53,7 +53,6 @@ def read_xml_bva(path):
             bva_mat.append(row)
         continuous_time += phase_time
     colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS])) #adds colnames for all the points
-    print(colnames)
     pd_bva = pd.DataFrame(bva_mat, columns=colnames)
     return(pd_bva)
 
@@ -66,6 +65,7 @@ def real_timestamp(element):
 
 def save_csv(pd_bva, path):
     pd_bva.to_csv(path, sep=";", index=False)
+
 
 def flatten_list(list_of_lists):
     return([item for sublist in list_of_lists for item in sublist])

@@ -1,10 +1,18 @@
 import matplotlib.pyplot as plt
 
 def plot_walking(pd_bva):
-    plt.plot(pd_bva.position_x, pd_bva.position_y)
+    plt.plot(pd_bva.Point_x, pd_bva.Point_y)
     plt.show()
-    
+
+
 def plot_position_histograms(pd_bva):
     fig, axes = plt.subplots(2)
-    pd_bva.hist(column='position_x', bins=100, ax=0)
-    pd_bva.hist(column='position_y', bins=100, ax=1)
+    pd_bva.hist(column='Point_x', bins=100, ax=0)
+    pd_bva.hist(column='Point_y', bins=100, ax=1)
+
+
+def plot_triangle(pd_bva, index):
+  plt.plot(pd_bva.Front_x[index], pd_bva.Front_y[index])
+  plt.plot(pd_bva.Right_x[index], pd_bva.Right_y[index])
+  plt.plot(pd_bva.Left_x[index], pd_bva.Left_y[index])
+  plt.show()
