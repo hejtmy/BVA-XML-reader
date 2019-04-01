@@ -10,7 +10,6 @@ from functions.bva_preprocessors import add_rotation
 pd_bva = read_xml_bva("example_data/example.xml")
 pd_bva = add_rotation(pd_bva)
 
-
 plot_triangle(pd_bva, 1000)
 
 save_csv(pd_bva, "bva.csv")

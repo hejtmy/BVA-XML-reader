@@ -18,11 +18,21 @@ def add_rotation(pd_bva):
 
 
 ## Calculates the perpendicular line to left and right point line which goes through front
-def calculate_perpendicular_cross(x1, y1, x2, y2, x3, y3):
-  k = ((y2-y1) * (x3-x1) - (x2-x1) * (y3-y1)) / (np.square(y2-y1) + np.square(x2-x1))
-  x4 = x3 - k * (y2-y1)
-  y4 = y3 + k * (x2-x1)
+def calculate_perpendicular_cross(line1_x, line1_y, line2_x, line2_y, origin_x, origin_y):
+  k = (((line2_y-line1_y) * (origin_x-line1_x)) - ((line2_x-line1_x) * (origin_y-line1_y))) / (np.square(line2_y-line1_y) + np.square(line2_x-line1_x))
+  x4 = origin_x - (k * (line2_y-line1_y))
+  y4 = origin_y + (k * (line2_x-line1_x))
   return(x4, y4)
+
+
+def calculate_perpendicular_cross_classical(line1_x, line1_y, line2_x, line2_y, origin_x, origin_y):
+  slope = (line2_x - line1_x) / (line2_y - line1_y)
+  b = line1_y + line1_x * slope
+  perp_slope = (line1_y - line2_y) / (line2_x - line1_x)
+  perp_b = origin_y + (perp_slope * origin_x) #linear coef B
+  cross_x = (perp_b - b)/(slope-perp_slope)
+  cross_y = perp_slope*cross_x + perp_b
+  return(cross_x, cross_y)
 
 
 def navr_output(pd_bva):
