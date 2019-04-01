@@ -1,7 +1,7 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 from datetime import datetime
-
+from bvareader.helpers import flatten_list
 
 def read_xml_phases(path):
     root = ET.parse(path).getroot()
@@ -67,6 +67,8 @@ def real_timestamp(element):
 def save_csv(pd_bva, path):
     pd_bva.to_csv(path, sep=";", index=False)
 
-
-def flatten_list(list_of_lists):
-    return([item for sublist in list_of_lists for item in sublist])
+def read_sync_file(path):
+    pd_sync = pd.read_csv(path, sep=",")
+    pd_sync.time = (pd.to_datetime(pd_sync.time, format='%H:%M:%S') - pd.to_datetime("00:00:00", format='%H:%M:%S')).dt.total_seconds()
+    pd_sync.time = pd_sync.time + pd_sync.ms / 1000
+    return(pd_sync)

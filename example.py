@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
-from functions.bva_xml_reader import save_csv
-from functions.bva_xml_reader import read_xml_bva
-from functions.bva_xml_reader import read_xml_sync
-from functions.bva_xml_reader import read_xml_phases
-from functions.bva_sync_reader import read_sync_file
-from functions.bva_plotting import plot_triangle
-from functions.bva_preprocessors import preprocess_bva_data
-from functions.bva_preprocessors import add_rotation
+from bvareader.reader import save_csv
+from bvareader.reader import read_xml_bva
+from bvareader.reader import read_xml_sync
+from bvareader.reader import read_xml_phases
+from bvareader.reader import read_sync_file
+from bvareader.plotter import plot_triangle
+from bvareader.preprocessing import preprocess_bva_data
+from bvareader.preprocessing import add_rotation
 
 pd_bva = read_xml_bva("example_data/example.xml")
 plot_triangle(pd_bva, 1000)
