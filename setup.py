@@ -23,4 +23,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+		entry_points={
+			'console_scripts':[
+				'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml'
+			]
+		}
 )
