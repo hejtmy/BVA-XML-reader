@@ -7,8 +7,10 @@ def clear_out_of_arena_positions(pd_bva):
     pd_bva.Point_y[np.abs(pd_bva.Point_y) > 250] = np.nan
     return(pd_bva)
 
+
 def add_rotation(pd_bva):
   return(pd_bva)
+
 
 def navr_output(pd_bva):
   pd_navr_bva = pd_bva

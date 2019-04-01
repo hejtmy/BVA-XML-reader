@@ -12,7 +12,7 @@ def plot_position_histograms(pd_bva):
 
 
 def plot_triangle(pd_bva, index):
-  plt.plot(pd_bva.Front_x[index], pd_bva.Front_y[index])
-  plt.plot(pd_bva.Right_x[index], pd_bva.Right_y[index])
-  plt.plot(pd_bva.Left_x[index], pd_bva.Left_y[index])
+  plt.scatter(pd_bva.Front_x[index], pd_bva.Front_y[index], marker='o', s=5)
+  plt.scatter(pd_bva.Right_x[index], pd_bva.Right_y[index], marker='o', s=5)
+  plt.scatter(pd_bva.Left_x[index], pd_bva.Left_y[index], marker='o', s=5)
   plt.show()
