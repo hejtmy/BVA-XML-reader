@@ -30,7 +30,7 @@ def add_rotation(pd_bva):
 # Removes columns used only for calculation of rotation
 def remove_unnecessary_columns(pd_bva, force=False):
   #checks if rotation has been calculated
-  cols = ['Right_x', 'Right_y', 'Left_x', 'Left_y', 'Front_x', 'Front_y']
+  cols = ['Right_x', 'Right_y', 'Left_x', 'Left_y', 'Front_x', 'Front_y', 'timestamp_bva']
   if 'rotation_x' not in pd_bva.columns:
     Warning('You are deleting columns without calculating rotation first. set force to True if you want to really delete')
   if 'rotation_x' in pd_bva.columns or force:

@@ -2,6 +2,8 @@ import sys
 import os
 from bvareader.reader import read_xml_bva
 from bvareader.reader import save_csv
+from bvareader.preprocessing import add_rotation
+from bvareader.preprocessing import preprocess_bva_data
 
 ## The command needs to be in the following format
 # path to the file originates in the active directory: path is specified using double quotes and os.sensitive separator (win: \, unix: /)

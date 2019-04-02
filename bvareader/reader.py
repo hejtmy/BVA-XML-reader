@@ -64,8 +64,9 @@ def real_timestamp(element):
     return(float(dt.timestamp()))
 
 
-def save_csv(pd_bva, path):
-    pd_bva.to_csv(path, sep=";", index=False)
+def save_csv(pd_bva, path, dec_points = 4):
+    f = '%.'+str(dec_points)+'f'
+    pd_bva.to_csv(path, sep=";", index=False, float_format=f)
 
 
 def read_sync_file(path):
