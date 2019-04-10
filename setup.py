@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="bva-reader",
+    name="bvareader",
     version="0.0.1",
     author="Lukáš Hejtmy Hejtmánek",
     author_email="hejtmy@gmail.com",
