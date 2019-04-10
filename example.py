@@ -1,8 +1,8 @@
-from bvareader.reader import save_csv
 from bvareader.reader import read_xml_bva
 from bvareader.reader import read_xml_sync
 from bvareader.reader import read_sync_file
 from bvareader.plotter import plot_triangle
+from bvareader.reader import save_csv
 from bvareader.preprocessing import preprocess_bva_data
 from bvareader.preprocessing import add_rotation
 

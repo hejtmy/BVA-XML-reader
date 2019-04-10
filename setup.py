@@ -11,7 +11,7 @@ setuptools.setup(
     description="Package to read and process BVA data from LF Motol",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/hejtmy/bva-reader",
     packages=setuptools.find_packages(),
 		install_requires=[
 			'pandas',
