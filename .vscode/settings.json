@@ -2,5 +2,8 @@
 	"python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\navigation\\python.exe",
 	"python.linting.pylintEnabled": false,
 	"python.linting.flake8Enabled": true,
-	"python.linting.enabled": true
+	"python.linting.enabled": true,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": false
 }

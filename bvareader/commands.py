@@ -5,17 +5,17 @@ from bvareader.reader import save_csv
 from bvareader.preprocessing import add_rotation
 from bvareader.preprocessing import preprocess_bva_data
 
-## The command needs to be in the following format
+
+# The command needs to be in the following format
 # path to the file originates in the active directory: path is specified using double quotes and os.sensitive separator (win: \, unix: /)
 # Name of the output file without extension
 # Example: python xml_to_csv.py "example_data\example.xml" "output"
 def bva_preprocess_xml():
-
-    ## Validations
+    # Validations
     if (len(sys.argv) < 2):
         sys.exit('You have to provide xml input file')
     else:
-        #TODO - issue with comman with single instead of double quotes
+        # TODO - issue with comman with single instead of double quotes
         path = os.getcwd() + '\\' + sys.argv[1]
 
     if (len(sys.argv) < 3):
