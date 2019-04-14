@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from bvareader.helpers import flatten_list
 
+
 def read_xml_phases(path):
     root = ET.parse(path).getroot()
     phase_times = []
