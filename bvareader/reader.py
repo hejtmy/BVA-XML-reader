@@ -9,7 +9,7 @@ def read_xml_phases(path):
     phase_times = []
     for phase in root.iter('Phase'):
         row = []
-        phase_time = 0
+        # phase_time = 0
         tps = phase.findall("./MousePath/TimestampPoint")
         if len(tps) == 0:
             row = [float('nan'), float('nan'), float('nan')]
@@ -18,7 +18,8 @@ def read_xml_phases(path):
             row.append(real_timestamp(tps[-1]))
             row.append(float(tps[-1].find('Timestamp').text))
         phase_times.append(row)
-    pd_phases = pd.DataFrame(phase_times, columns=["timestamp_start", "timestamp_end", "claimed_length"])
+    pd_phases = pd.DataFrame(phase_times, columns=["timestamp_start", 
+                             "timestamp_end", "claimed_length"])
     return(pd_phases)
 
 
@@ -60,12 +61,13 @@ def read_xml_bva(path):
 
 
 def real_timestamp(element):
-    #timestamp real is in form of 01/29/2019 10:02:45.574
-    dt = datetime.strptime(element.find('TimestampReal').text, '%m/%d/%Y %H:%M:%S.%f')             
+    # timestamp real is in form of 01/29/2019 10:02:45.574
+    dt = datetime.strptime(element.find('TimestampReal').text, 
+                           '%m/%d/%Y %H:%M:%S.%f')
     return(float(dt.timestamp()))
 
 
-def save_csv(pd_bva, path, dec_points = 4):
+def save_csv(pd_bva, path, dec_points=4):
     f = '%.'+str(dec_points)+'f'
     pd_bva.to_csv(path, sep=";", index=False, float_format=f)
 
