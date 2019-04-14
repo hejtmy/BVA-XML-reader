@@ -15,19 +15,19 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/hejtmy/bva-reader",
     packages=setuptools.find_packages(),
-		install_requires=[
-			'pandas',
-			'numpy>=1.16.0',
-			'matplotlib',
-		],
+    install_requires=[
+      'pandas',
+      'numpy>=1.16.0',
+      'matplotlib',
+      ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-    ],
-		entry_points={
-			'console_scripts':[
-				'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml'
-			]
-		}
+      ],
+    entry_points={
+      'console_scripts': [
+        'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml'
+        ]
+    }
 )
