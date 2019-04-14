@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<experiment 
+	name="iEEG navigation"
+	averageTotalError="18.63"
+	standardDeviationOfTotalError="12.9753498163688"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../experiment.xsd">    
+	
+
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="A1-trening">
+		<angle>195</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">3</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="A1-trening">
+		<angle>195</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">3</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="A1-trening">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">4</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>2</start>
+	<goal name="A1-trening">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">1</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="E1-trening">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="E1-trening">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="E1-trening">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="E1-trening">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="A2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">6</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="A2">
+		<angle>195</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">3</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>6</start>
+	<goal name="A2">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">2</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="E2">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>2</start>
+	<goal name="A2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">4</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>6</start>
+	<goal name="E2">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="A2">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">1</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="E2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>6</start>
+	<goal name="E2">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="A2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">4</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>2</start>
+	<goal name="E2">
+		<angle>285</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="A2">
+		<angle>285</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">5</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="A2">
+		<angle>60</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">8</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>6</start>
+	<goal name="E2">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="E2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="E2">
+		<angle>195</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="A2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">4</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="E2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>8</start>
+	<goal name="E2">
+		<angle>195</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>5</start>
+	<goal name="A2">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">7</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="A2">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">7</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="E2">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="A2">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">7</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>5</start>
+	<goal name="E2">
+		<angle>60</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>6</start>
+	<goal name="A2">
+		<angle>105</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">1</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="A2">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">2</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="E2">
+		<angle>240</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="E2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="A2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">6</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="A2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">6</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>2</start>
+	<goal name="E2">
+		<angle>285</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>5</start>
+	<goal name="E2">
+		<angle>60</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>4</start>
+	<goal name="E2">
+		<angle>15</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>2</start>
+	<goal name="A2">
+		<angle>285</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">5</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>5</start>
+	<goal name="A2">
+		<angle>60</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">8</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>1</start>
+	<goal name="A2">
+		<angle>285</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">5</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>5</start>
+	<goal name="E2">
+		<angle>60</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>3</start>
+	<goal name="E2">
+		<angle>330</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="A2">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors><anchor color="red" shape="3" isVisible="true">2</anchor></anchors>
+	</phase>
+<phase name="z" hideStartBeforeMeasurement="true" hideGoalBeforeMeasurement="true">
+	<start>7</start>
+	<goal name="E2">
+		<angle>150</angle>
+		<relativeDistance>65</relativeDistance>
+		<radius>15</radius>
+	</goal>	
+	<anchors />
+	</phase>
+  
+</experiment>
