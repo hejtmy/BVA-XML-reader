@@ -3,6 +3,7 @@ example_data/
 data/
 function_playground.py
 *.csv
+!tests/test_data/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
