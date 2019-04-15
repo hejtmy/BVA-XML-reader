@@ -1,6 +1,11 @@
 # BVA reader
 Python package which reads and parses xml data from LF in Motol.
 
+## Installation
+The project is currently hosted on test PyPi and can be downloaded from such
+[https://test.pypi.org/project/bvareader/](https://test.pypi.org/project/bvareader/)
+
+
 ## Use examples
 Main use can be through the command line prompts, which doesn't require you to run your own preprocessing scripts. But if you prefer, you can preprocess and save the data in your own way.
 
