@@ -2,7 +2,8 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from bvareader.helpers import flatten_list
-
+from bvareader.helpers import find_duplicates
+from bvareader.helpers import remove_at_indices
 
 def read_xml_phases(path):
     root = ET.parse(path).getroot()
@@ -55,9 +56,21 @@ def read_xml_bva(path):
                     row.append(float("NaN"))
             bva_mat.append(row)
         continuous_time += phase_time
-    colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS])) #adds colnames for all the points
+    # adds colnames for all the points
+    colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS]))  
     pd_bva = pd.DataFrame(bva_mat, columns=colnames)
     return(pd_bva)
+
+
+def read_xml_settings(path):
+    root = ET.parse(path).getroot()
+    pd_settings = pd.DataFrame()
+    for phase in root.iter('phase'):
+        keys, values = element_to_row(phase)
+        # Check if the keys are still the same and values of the same length
+        pd_row = pd.DataFrame([values], columns=keys)
+        pd_settings = pd.concat([pd_settings, pd_row])
+    return pd_settings
 
 
 def real_timestamp(element):
@@ -77,3 +90,24 @@ def read_sync_file(path):
     pd_sync.time = (pd.to_datetime(pd_sync.time, format='%H:%M:%S') - pd.to_datetime("00:00:00", format='%H:%M:%S')).dt.total_seconds()
     pd_sync.time = pd_sync.time + pd_sync.ms / 1000
     return(pd_sync)
+
+
+def element_to_row(element):
+    keys = flatten_list([[element.tag + "_" + x] for x in list(element.attrib.keys())])
+    values = list(element.attrib.values())
+    for el in element:
+        tag = el.tag
+        tag_keys = list(el.attrib.keys())
+        keys += flatten_list([[tag + "_" + x] for x in tag_keys])
+        tag_values = list(el.attrib.values())
+        values += tag_values
+        value = el.text
+        if value is not None:
+            keys += [tag + "_value"]
+            values += [str(value)]
+        children_keys, child_values = element_to_row(el)
+        keys, values = keys + children_keys, values + child_values
+    i_duplicate = find_duplicates(keys)
+    keys, values = remove_at_indices(keys, i_duplicate), remove_at_indices(values, i_duplicate)
+    return keys, values
+
