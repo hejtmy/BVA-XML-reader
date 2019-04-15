@@ -31,4 +31,3 @@ def test_loading_sync_csv(sync_csv_data_path):
 def test_loading_settings_xml(settings_xml_data_path):
     pd_settings = reader.read_xml_settings(settings_xml_data_path)
     assert isinstance(pd_settings, pd.core.frame.DataFrame)
-    

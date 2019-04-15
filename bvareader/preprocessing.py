@@ -7,6 +7,7 @@ import numpy as np
 def preprocess_bva_data(pd_bva):
     pd_bva = clear_out_of_arena_positions(pd_bva)
     pd_bva = add_rotation(pd_bva)
+    pd_bva = add_midpoint(pd_bva)
     pd_bva = remove_unnecessary_columns(pd_bva)
     pd_bva = rename_columns(pd_bva)
     return(pd_bva)
@@ -28,10 +29,16 @@ def add_rotation(pd_bva):
     return(pd_bva)
 
 
+def add_midpoint(pd_bva):
+    pd_bva['midpoint_x'] = (pd_bva.Right_x + pd_bva.Left_x + pd_bva.Front_x) / 3
+    pd_bva['midpoint_y'] = (pd_bva.Right_y + pd_bva.Left_y + pd_bva.Front_y) / 3
+    return pd_bva
+
+
 # Removes columns used only for calculation of rotation
 def remove_unnecessary_columns(pd_bva, force=False):
     # checks if rotation has been calculated
-    cols = ['Right_x', 'Right_y', 'Left_x', 'Left_y', 'Front_x', 'Front_y', 'timestamp_bva']
+    cols = ['Point_x', 'Point_y', 'Right_x', 'Right_y', 'Left_x', 'Left_y', 'Front_x', 'Front_y', 'timestamp_bva']
     if 'rotation_x' not in pd_bva.columns:
         Warning('You are deleting columns without calculating rotation first. set force to True if you want to really delete')
     if 'rotation_x' in pd_bva.columns or force:
@@ -40,7 +47,7 @@ def remove_unnecessary_columns(pd_bva, force=False):
 
 
 def rename_columns(pd_bva):
-    pd_bva = pd_bva.rename(columns={"Point_x": 'position_x', 'Point_y': 'position_y'})
+    pd_bva = pd_bva.rename(columns={"midpoint_x": 'position_x', 'midpoint_y': 'position_y'})
     return(pd_bva)
 
 
