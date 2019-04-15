@@ -29,6 +29,7 @@ setuptools.setup(
       'console_scripts': [
         'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml',
         'bva-settings-to-csv = bvareader.commands:xml_settings_to_csv',
+        'bva-phases-table = bvareader.commands:bva_get_phases_table',
         ]
     }
 )

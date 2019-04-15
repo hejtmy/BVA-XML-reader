@@ -5,21 +5,24 @@ from bvareader.helpers import flatten_list
 from bvareader.helpers import find_duplicates
 from bvareader.helpers import remove_at_indices
 
+
 def read_xml_phases(path):
     root = ET.parse(path).getroot()
     phase_times = []
+    i_phase = 0
     for phase in root.iter('Phase'):
-        row = []
+        row = [str(i_phase)]
         # phase_time = 0
         tps = phase.findall("./MousePath/TimestampPoint")
         if len(tps) == 0:
-            row = [float('nan'), float('nan'), float('nan')]
+            row += [float('nan'), float('nan'), float('nan')]
         else:
             row.append(real_timestamp(tps[0]))
             row.append(real_timestamp(tps[-1]))
             row.append(float(tps[-1].find('Timestamp').text))
         phase_times.append(row)
-    pd_phases = pd.DataFrame(phase_times, columns=["timestamp_start", 
+        i_phase += 1
+    pd_phases = pd.DataFrame(phase_times, columns=["phase_number", "timestamp_start", 
                              "timestamp_end", "claimed_length"])
     return(pd_phases)
 
