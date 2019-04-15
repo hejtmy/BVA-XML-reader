@@ -29,8 +29,14 @@ save_csv(pd_sync, "sync.csv")
 ## Command line prompt
 By installing the package from PyPI, you will get the python entry point which you can use in the command line.
 
-```python
+BVA xml output preprocessing
+```bash
 bva-preprocess-xml "path_to_xml" "path_to_output_without_extension"
+```
+
+XML settings to csv output
+```bash
+bva-settings-to-csv "path_to_xml" "path_to_output_without_extension"
 ```
 
 ### FAQ
