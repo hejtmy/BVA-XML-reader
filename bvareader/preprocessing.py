@@ -5,18 +5,19 @@ import numpy as np
 # Adds rotation
 # clears out positions
 def preprocess_bva_data(pd_bva):
-    pd_bva = clear_out_of_arena_positions(pd_bva)
     pd_bva = add_rotation(pd_bva)
     pd_bva = add_midpoint(pd_bva)
     pd_bva = remove_unnecessary_columns(pd_bva)
     pd_bva = rename_columns(pd_bva)
+    # Needs to be after column renaming because it removes position_x column which is renamed above
+    pd_bva = clear_out_of_arena_positions(pd_bva)
     return(pd_bva)
 
 
 # Removes any points that are out of constraints of the bva and replaces then with NAs
 def clear_out_of_arena_positions(pd_bva):
-    pd_bva.Point_x[np.abs(pd_bva.Point_x) > 250] = np.nan
-    pd_bva.Point_y[np.abs(pd_bva.Point_y) > 250] = np.nan
+    pd_bva.position_x[np.abs(pd_bva.position_x) > 250] = np.nan
+    pd_bva.position_x[np.abs(pd_bva.position_x) > 250] = np.nan
     return(pd_bva)
 
 
