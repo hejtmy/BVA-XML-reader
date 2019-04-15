@@ -44,6 +44,11 @@ XML settings to csv output
 bva-settings-to-csv "path_to_xml" "path_to_output_without_extension"
 ```
 
+Phases times to csv output 
+```bash
+bva-phases-table "path_to_xml" "path_to_output_without_extension"
+```
+
 ### FAQ
 Q: The command line commands are not found.
 
