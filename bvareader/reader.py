@@ -9,7 +9,7 @@ from bvareader.helpers import remove_at_indices
 def read_xml_phases(path):
     root = ET.parse(path).getroot()
     phase_times = []
-    i_phase = 0
+    i_phase = 1
     for phase in root.iter('Phase'):
         row = [str(i_phase)]
         # phase_time = 0
@@ -68,11 +68,15 @@ def read_xml_bva(path):
 def read_xml_settings(path):
     root = ET.parse(path).getroot()
     pd_settings = pd.DataFrame()
+    i_phase = 1
     for phase in root.iter('phase'):
         keys, values = element_to_row(phase)
+        keys += ["phase_number"]
+        values += [str(i_phase)]
         # Check if the keys are still the same and values of the same length
         pd_row = pd.DataFrame([values], columns=keys)
         pd_settings = pd.concat([pd_settings, pd_row])
+        i_phase += 1
     return pd_settings
 
 
