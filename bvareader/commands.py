@@ -12,8 +12,23 @@ from bvareader.preprocessing import preprocess_bva_data
 def bva_preprocess_xml():
     # Validations
     path = get_sys_filepath(sys.argv)
+    output_name = default_sys_argument(sys.argv)
 
-    output_name = default_sys_argument(sys.argv, 'bva_output')
+    pd_bva = reader.read_xml_bva(path)
+    pd_bva = add_rotation(pd_bva)
+    pd_bva2 = preprocess_bva_data(pd_bva)
+    pd_sync = reader.read_xml_sync(path)
+    pd_phases = reader.read_xml_phases(path)
+
+    reader.save_csv(pd_bva, output_name + 'positions_full.csv')
+    reader.save_csv(pd_bva2, output_name + 'positions.csv')
+    reader.save_csv(pd_sync, output_name + 'sync_times.csv')
+    reader.save_csv(pd_phases, output_name + 'phases.csv')
+
+def bva_positions_table():
+    # Validations
+    path = get_sys_filepath(sys.argv)
+    output_name = default_sys_argument(sys.argv) + 'positions'
 
     pd_bva = reader.read_xml_bva(path)
     pd_bva = add_rotation(pd_bva)
@@ -23,23 +38,24 @@ def bva_preprocess_xml():
     reader.save_csv(pd_bva2, output + '.csv')
 
 
-def bva_get_sync_times():
+def bva_sync_times_table():
      # Validations
     path = get_sys_filepath(sys.argv)
-    output_name = default_sys_argument(sys.argv, 'sync')
+    output_name = default_sys_argument(sys.argv) + 'sync_times.csv'
+    pd_sync = reader.read_xml_sync(path)
+    reader.save_csv(pd_sync, output_name)
 
 
-
-def bva_get_phases_table():
+def bva_phases_table():
     # Validations
     path = get_sys_filepath(sys.argv)
-    output_name = default_sys_argument(sys.argv, 'phases2')
+    output_name = default_sys_argument(sys.argv) + 'phases.csv'
     pd_phases = reader.read_xml_phases(path)
-    reader.save_csv(pd_phases, output_name + '.csv')
+    reader.save_csv(pd_phases, output_name)
 
 
 def xml_settings_to_csv():
-        # Validations
+    # Validations
     if (len(sys.argv) < 2):
         sys.exit('You have to provide xml input file')
     else:
@@ -66,10 +82,10 @@ def get_sys_filepath(args):
         # check existence
     return(path)
 
-def default_sys_argument(args, default):
+
+def default_sys_argument(args):
     if (len(args) < 3): 
-        output_name = default
+        output_name = ''
     else:
-        output_name = args[2]
-    print('output file will be named ' + output_name + '.csv')
+        output_name = args[2] + '_'
     return(output_name)

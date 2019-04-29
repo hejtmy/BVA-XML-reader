@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from bvareader.helpers import flatten_list
@@ -33,7 +34,8 @@ def read_xml_sync(path):
     for phase in root.iter('Phase'):
         for sync in phase.iter('SyncEEGAction'):
             times.append(real_timestamp(sync))
-    return(times)
+    pd_times = pd.DataFrame(data ={'order': list(range(1,len(times)+1)), 'timestamp': times})
+    return(pd_times)
 
 
 def read_xml_bva(path):

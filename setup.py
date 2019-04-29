@@ -28,8 +28,10 @@ setuptools.setup(
     entry_points={
       'console_scripts': [
         'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml',
+        'bva-positions-table = bvareader.commands:bva_positions_table',
+        'bva-phases-table = bvareader.commands:bva_phases_table',
+        'bva-sync-times-table = bvareader.commands:bva_sync_times_table',
         'bva-settings-to-csv = bvareader.commands:xml_settings_to_csv',
-        'bva-phases-table = bvareader.commands:bva_get_phases_table',
         ]
     }
 )
