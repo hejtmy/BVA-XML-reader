@@ -29,6 +29,12 @@ pd_sync = read_sync_file("example_data/example.csv")
 save_csv(pd_sync, "sync.csv")
 ```
 
+### Data explanation
+
+#### Timestamp
+Bva outputs real timestamp (date and time of each recording). This package converts this datetime number as the POSIX timestamp (number of seconds since 1.1.1970) as per `datetime.timestamp()` function described in [here](https://docs.python.org/3/library/datetime.html#datetime.datetime)
+
+
 ### Plotting
 
 ## Command line prompt

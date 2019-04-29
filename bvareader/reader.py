@@ -60,7 +60,7 @@ def read_xml_bva(path):
             bva_mat.append(row)
         continuous_time += phase_time
     # adds colnames for all the points
-    colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS]))  
+    colnames = ['timestamp_bva', 'timestamp'] + (flatten_list([[x + "_x", x + "_y"] for x in POINTS]))
     pd_bva = pd.DataFrame(bva_mat, columns=colnames)
     return(pd_bva)
 
@@ -78,7 +78,7 @@ def read_xml_settings(path):
 
 def real_timestamp(element):
     # timestamp real is in form of 01/29/2019 10:02:45.574
-    dt = datetime.strptime(element.find('TimestampReal').text, 
+    dt = datetime.strptime(element.find('TimestampReal').text,
                            '%m/%d/%Y %H:%M:%S.%f')
     return(float(dt.timestamp()))
 
@@ -113,4 +113,3 @@ def element_to_row(element):
     i_duplicate = find_duplicates(keys)
     keys, values = remove_at_indices(keys, i_duplicate), remove_at_indices(values, i_duplicate)
     return keys, values
-
