@@ -25,6 +25,9 @@ pd_bva = add_rotation(pd_bva)
 save_csv(pd_bva_clean, "bva.csv")
 save_csv(pd_bva, "bva_full.csv")
 
+bva_sync = read_xml_sync("example_data/example.xml")
+save_csv(pd_sync, "bva_sync.csv")
+
 pd_sync = read_sync_file("example_data/example.csv")
 save_csv(pd_sync, "sync.csv")
 ```
