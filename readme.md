@@ -58,6 +58,11 @@ Phases times to csv output
 bva-phases-table "path_to_xml" "path_to_output_without_extension"
 ```
 
+Measure starts and stop times
+```bash
+bva-measures-start-stop-table "path_to_xml" "path_to_output_without_extension"
+```
+
 ### FAQ
 Q: The command line commands are not found.
 

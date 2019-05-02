@@ -1,4 +1,3 @@
-import pytest
 from bvareader import reader
 import pandas as pd
 
@@ -19,5 +18,5 @@ def test_loading_settings_xml(settings_xml_data_path):
 
 
 def test_loading_measure_start(settings_xml_data_path):
-    pd_settings = reader.read_measure_start_stop(settings_xml_data_path)
-    assert isinstance(pd_settings, pd.core.frame.DataFrame)
+    pd_start_stop = reader.read_measure_start_stop(settings_xml_data_path)
+    assert isinstance(pd_start_stop, pd.core.frame.DataFrame)

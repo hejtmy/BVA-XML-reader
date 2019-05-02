@@ -68,23 +68,23 @@ def read_xml_bva(path):
 
 def read_measure_start_stop(path):
     root = ET.parse(path).getroot()
-    i_phase = 1
-    start_times = []
-    stop_times = []
-    phases = []
+    start_times, stop_times, i_phases = [], [], []
+    i_phase = 0 # raised to 1 in the first phase
     for phase in root.iter('Phase'):
-        phase_timestamp = real_timestamp(phase.find("./MousePath/TimestampPoint"))
-        measures_starts = phase.findall("MeasureStartItem")
-        measures_stops = phase.findall("MeasureStopItem")
+        i_phase += 1
+        measures_starts = phase.findall("./MousePath/MeasureStartItem")
+        measures_stops = phase.findall("./MousePath/MeasureStopItem")
         if(len(measures_starts) != len(measures_stops)):
             raise Exception('there is unequal number of start measures and stop measures')
+        if(len(measures_starts) < 1):
+            continue
+        phase_timestamp = real_timestamp(phase.find("./MousePath/TimestampPoint"))
         for n in range(0, len(measures_starts)):
             start_times += [float(measures_starts[n].find("Timestamp").text) + phase_timestamp]
             stop_times += [float(measures_stops[n].find("Timestamp").text) + phase_timestamp]
-            phases += [str(i_phase)]
-        i_phase += 1
+            i_phases += [str(i_phase)]
     pd_start_stops = pd.DataFrame(data={'measure_start': start_times, 'measure_stop': stop_times,
-                                        'phase_number': phases})
+                                        'phase_number': i_phases})
     return pd_start_stops
 
 
