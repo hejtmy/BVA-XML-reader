@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bvareader",
-    version="0.1.2",
+    version="0.1.3",
     author="Lukáš Hejtmy Hejtmánek",
     author_email="hejtmy@gmail.com",
     description="Package to read and process BVA data from LF Motol",
