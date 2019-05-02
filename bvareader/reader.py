@@ -67,6 +67,10 @@ def read_xml_bva(path):
     return(pd_bva)
 
 
+def read_measure_start_stop(path):
+    return()
+
+
 def read_xml_settings(path):
     root = ET.parse(path).getroot()
     pd_settings = pd.DataFrame()
