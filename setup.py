@@ -30,6 +30,7 @@ setuptools.setup(
         'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml',
         'bva-positions-table = bvareader.commands:bva_positions_table',
         'bva-phases-table = bvareader.commands:bva_phases_table',
+        'bva-measures-start-stop-table = bvareader.commands:bva_measure_start_stop_table',
         'bva-sync-times-table = bvareader.commands:bva_sync_times_table',
         'bva-settings-to-csv = bvareader.commands:xml_settings_to_csv',
         ]

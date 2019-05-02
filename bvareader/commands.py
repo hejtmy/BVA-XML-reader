@@ -5,10 +5,12 @@ from bvareader.preprocessing import add_rotation
 from bvareader.preprocessing import preprocess_bva_data
 
 
-#' The command needs to be in the following format:
-#' path to the file originates in the active directory: path is specified using double quotes and os.sensitive separator (win: \, unix: /)
-#' Name of the output file without extension
-#' Example: python xml_to_csv.py "example_data\example.xml" "output"
+# ' The command needs to be in the following format:
+# ' path to the file originating in the active directory, using double quotes and os.sensitive separator
+# ' Name of the output file without extension, e.g. "patient154"
+# '
+# ' Example: python xml_to_csv.py "example_data\p154_456.xml" "patient154"
+
 def bva_preprocess_xml():
     # Validations
     path = get_sys_filepath(sys.argv)
@@ -19,11 +21,14 @@ def bva_preprocess_xml():
     pd_bva2 = preprocess_bva_data(pd_bva)
     pd_sync = reader.read_xml_sync(path)
     pd_phases = reader.read_xml_phases(path)
+    pd_start_stop = reader.read_measure_start_stop(path)
 
     reader.save_csv(pd_bva, output_name + 'positions_full.csv')
     reader.save_csv(pd_bva2, output_name + 'positions.csv')
     reader.save_csv(pd_sync, output_name + 'sync_times.csv')
     reader.save_csv(pd_phases, output_name + 'phases.csv')
+    reader.save_csv(pd_start_stop, output_name + 'measure_start_stop.csv')
+
 
 def bva_positions_table():
     # Validations
@@ -34,12 +39,12 @@ def bva_positions_table():
     pd_bva = add_rotation(pd_bva)
     pd_bva2 = preprocess_bva_data(pd_bva)
 
-    reader.save_csv(pd_bva, output + '_full.csv')
-    reader.save_csv(pd_bva2, output + '.csv')
+    reader.save_csv(pd_bva, output_name + '_full.csv')
+    reader.save_csv(pd_bva2, output_name + '.csv')
 
 
 def bva_sync_times_table():
-     # Validations
+    # Validations
     path = get_sys_filepath(sys.argv)
     output_name = default_sys_argument(sys.argv) + 'sync_times.csv'
     pd_sync = reader.read_xml_sync(path)
@@ -52,6 +57,14 @@ def bva_phases_table():
     output_name = default_sys_argument(sys.argv) + 'phases.csv'
     pd_phases = reader.read_xml_phases(path)
     reader.save_csv(pd_phases, output_name)
+
+
+def bva_measure_start_stop_table():
+    # Validations
+    path = get_sys_filepath(sys.argv)
+    output_name = default_sys_argument(sys.argv) + 'measure_start_stop.csv'
+    pd_start_stop = reader.read_measure_start_stop(path)
+    reader.save_csv(pd_start_stop, output_name)
 
 
 def xml_settings_to_csv():

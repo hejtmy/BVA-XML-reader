@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from bvareader.helpers import flatten_list
@@ -34,7 +33,7 @@ def read_xml_sync(path):
     for phase in root.iter('Phase'):
         for sync in phase.iter('SyncEEGAction'):
             times.append(real_timestamp(sync))
-    pd_times = pd.DataFrame(data ={'order': list(range(1,len(times)+1)), 'timestamp': times})
+    pd_times = pd.DataFrame(data={'order': list(range(1, len(times)+1)), 'timestamp': times})
     return(pd_times)
 
 
@@ -68,7 +67,25 @@ def read_xml_bva(path):
 
 
 def read_measure_start_stop(path):
-    return()
+    root = ET.parse(path).getroot()
+    i_phase = 1
+    start_times = []
+    stop_times = []
+    phases = []
+    for phase in root.iter('Phase'):
+        phase_timestamp = real_timestamp(phase.find("./MousePath/TimestampPoint"))
+        measures_starts = phase.findall("MeasureStartItem")
+        measures_stops = phase.findall("MeasureStopItem")
+        if(len(measures_starts) != len(measures_stops)):
+            raise Exception('there is unequal number of start measures and stop measures')
+        for n in range(0, len(measures_starts)):
+            start_times += [float(measures_starts[n].find("Timestamp").text) + phase_timestamp]
+            stop_times += [float(measures_stops[n].find("Timestamp").text) + phase_timestamp]
+            phases += [str(i_phase)]
+        i_phase += 1
+    pd_start_stops = pd.DataFrame(data={'measure_start': start_times, 'measure_stop': stop_times,
+                                        'phase_number': phases})
+    return pd_start_stops
 
 
 def read_xml_settings(path):
@@ -88,12 +105,13 @@ def read_xml_settings(path):
 
 def read_sync_file(path):
     pd_sync = pd.read_csv(path, sep=",")
-    pd_sync.time = (pd.to_datetime(pd_sync.time, format='%H:%M:%S') - pd.to_datetime("00:00:00", format='%H:%M:%S')).dt.total_seconds()
+    pd_sync.time = (pd.to_datetime(pd_sync.time, format='%H:%M:%S') -
+                    pd.to_datetime("00:00:00", format='%H:%M:%S')).dt.total_seconds()
     pd_sync.time = pd_sync.time + pd_sync.ms / 1000
     return(pd_sync)
 
 
-#' Heavilly needs description
+# ' Heavily needs description
 def element_to_row(element):
     keys = flatten_list([[element.tag + "_" + x] for x in list(element.attrib.keys())])
     values = list(element.attrib.values())
@@ -114,7 +132,7 @@ def element_to_row(element):
     return keys, values
 
 
-#' Converts XML BVA timestamp to POSIX timestamp
+# ' Converts XML BVA timestamp to POSIX timestamp
 def real_timestamp(element):
     # timestamp real is in form of 01/29/2019 10:02:45.574
     dt = datetime.strptime(element.find('TimestampReal').text,
@@ -122,7 +140,7 @@ def real_timestamp(element):
     return(float(dt.timestamp()))
 
 
-#' Wrapper around 
+# ' Wrapper around 
 def save_csv(pd_bva, path, dec_points=4):
     f = '%.'+str(dec_points)+'f'
     pd_bva.to_csv(path, sep=";", index=False, float_format=f)
