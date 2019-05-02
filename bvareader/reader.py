@@ -69,7 +69,7 @@ def read_xml_bva(path):
 def read_measure_start_stop(path):
     root = ET.parse(path).getroot()
     start_times, stop_times, i_phases = [], [], []
-    i_phase = 0 # raised to 1 in the first phase
+    i_phase = 0  # raised to 1 in the first phase
     for phase in root.iter('Phase'):
         i_phase += 1
         measures_starts = phase.findall("./MousePath/MeasureStartItem")

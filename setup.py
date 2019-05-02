@@ -20,7 +20,7 @@ setuptools.setup(
       'numpy>=1.16.0',
       'matplotlib',
       ],
-    tests_require=["pytest",],
+    tests_require=["pytest", ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
