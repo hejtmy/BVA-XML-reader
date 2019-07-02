@@ -28,7 +28,7 @@ setuptools.setup(
       ],
     entry_points={
       'console_scripts': [
-        'bva-preprocess-xml = bvareader.commands:bva_preprocess_xml',
+        'bva-preprocess-xml = bvareader.commands:sys_bva_preprocess_xml',
         'bva-positions-table = bvareader.commands:bva_positions_table',
         'bva-phases-table = bvareader.commands:bva_phases_table',
         'bva-measures-start-stop-table = bvareader.commands:bva_measure_start_stop_table',

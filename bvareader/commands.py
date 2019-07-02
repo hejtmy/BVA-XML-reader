@@ -12,11 +12,14 @@ from bvareader.preprocessing import preprocess_bva_data
 # ' Example: python xml_to_csv.py "example_data\p154_456.xml" "patient154"
 
 
-def bva_preprocess_xml():
+def sys_bva_preprocess_xml():
     # Validations
-    path = get_sys_filepath(sys.argv)
+    file_path = get_sys_filepath(sys.argv)
     output_path = create_output_path(sys.argv)
+    bva_preprocess_xml(file_path, output_path)
 
+
+def bva_preprocess_xml(path, output_path):
     pd_bva = reader.read_xml_bva(path)
     pd_bva = add_rotation(pd_bva)
     pd_bva2 = preprocess_bva_data(pd_bva)
