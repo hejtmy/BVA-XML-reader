@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def bva_xml_data_path():
     return "tests/test_data/example_bva.xml"
