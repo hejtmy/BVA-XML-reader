@@ -91,7 +91,7 @@ def get_sys_filepath(args):
         sys.exit('You have to provide valid input file path')
     else:
         # TODO - issue with comman with single instead of double quotes
-        path = os.getcwd() + '\\' + args[1]
+        path = os.path.join(os.getcwd(), args[1])
         # check existence
     return(path)
 
