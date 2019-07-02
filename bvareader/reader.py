@@ -74,15 +74,19 @@ def read_measure_start_stop(path):
         i_phase += 1
         measures_starts = phase.findall("./MousePath/MeasureStartItem")
         measures_stops = phase.findall("./MousePath/MeasureStopItem")
-        if(len(measures_starts) != len(measures_stops)):
-            raise Exception('there is unequal number of start measures and stop measures')
         if(len(measures_starts) < 1):
             continue
-        phase_timestamp = real_timestamp(phase.find("./MousePath/TimestampPoint"))
-        for n in range(0, len(measures_starts)):
-            start_times += [float(measures_starts[n].find("Timestamp").text) + phase_timestamp]
-            stop_times += [float(measures_stops[n].find("Timestamp").text) + phase_timestamp]
+        if(len(measures_starts) != len(measures_stops)):
+            # raise Exception('there is unequal number of start measures and stop measures')
+            start_times += [float("NaN")]
+            stop_times += [float("NaN")]
             i_phases += [str(i_phase)]
+        else:
+            phase_timestamp = real_timestamp(phase.find("./MousePath/TimestampPoint"))
+            for n in range(0, len(measures_starts)):
+                start_times += [float(measures_starts[n].find("Timestamp").text) + phase_timestamp]
+                stop_times += [float(measures_stops[n].find("Timestamp").text) + phase_timestamp]
+                i_phases += [str(i_phase)]
     pd_start_stops = pd.DataFrame(data={'measure_start': start_times, 'measure_stop': stop_times,
                                         'phase_number': i_phases})
     return pd_start_stops
