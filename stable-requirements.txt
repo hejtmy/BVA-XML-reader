@@ -1,0 +1,15 @@
+-e git+https://github.com/hejtmy/bvareader@d590b9efe3efc21d2f7676a3db6c1de2e8ee3f8f#egg=bvareader
+cycler==0.10.0
+entrypoints==0.3
+flake8==3.7.7
+kiwisolver==1.1.0
+matplotlib==3.1.0
+mccabe==0.6.1
+numpy==1.16.4
+pandas==0.24.2
+pycodestyle==2.5.0
+pyflakes==2.1.1
+pyparsing==2.4.0
+python-dateutil==2.8.0
+pytz==2019.1
+six==1.12.0
