@@ -23,8 +23,9 @@ def clear_out_of_arena_positions(pd_bva):
 
 
 def add_rotation(pd_bva):
-    x_cross, y_cross = calculate_perpendicular_cross(pd_bva.Left_x, pd_bva.Left_y, 
-                                                     pd_bva.Right_x, pd_bva.Right_y, pd_bva.Front_x, pd_bva.Front_y)
+    x_cross, y_cross = calculate_perpendicular_cross(pd_bva.Left_x, pd_bva.Left_y,
+                                                     pd_bva.Right_x, pd_bva.Right_y,
+                                                     pd_bva.Front_x, pd_bva.Front_y)
     front_x, front_y = pd_bva.Front_x - x_cross, pd_bva.Front_y - y_cross
     zipped = list(zip(front_x, front_y))
     pd_bva['rotation_x'] = angle_between(zipped, [(0, 1)])
@@ -42,7 +43,8 @@ def remove_unnecessary_columns(pd_bva, force=False):
     # checks if rotation has been calculated
     cols = ['Point_x', 'Point_y', 'Right_x', 'Right_y', 'Left_x', 'Left_y', 'Front_x', 'Front_y', 'timestamp_bva']
     if 'rotation_x' not in pd_bva.columns:
-        Warning('You are deleting columns without calculating rotation first. set force to True if you want to really delete')
+        Warning('You are deleting columns without calculating rotation first. \
+            set force to True if you want to really delete')
     if 'rotation_x' in pd_bva.columns or force:
         pd_bva = pd_bva.drop(cols, axis=1)
     return(pd_bva)
@@ -55,7 +57,9 @@ def rename_columns(pd_bva):
 
 # Calculates the perpendicular line to left and right point line which goes through front
 def calculate_perpendicular_cross(line1_x, line1_y, line2_x, line2_y, origin_x, origin_y):
-    k = (((line2_y-line1_y) * (origin_x-line1_x)) - ((line2_x-line1_x) * (origin_y-line1_y))) / (np.square(line2_y-line1_y) + np.square(line2_x-line1_x))
+    k = (((line2_y-line1_y) * (origin_x-line1_x)) -
+         ((line2_x-line1_x) * (origin_y-line1_y))) / \
+        (np.square(line2_y - line1_y) + np.square(line2_x-line1_x))
     x4 = origin_x - (k * (line2_y-line1_y))
     y4 = origin_y + (k * (line2_x-line1_x))
     return(x4, y4)

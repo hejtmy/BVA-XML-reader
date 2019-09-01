@@ -32,38 +32,21 @@ pd_sync = read_sync_file("example_data/example.csv")
 save_csv(pd_sync, "sync.csv")
 ```
 
-### Data explanation
-
 #### Timestamp
 Bva outputs real timestamp (date and time of each recording). This package converts this datetime number as the POSIX timestamp (number of seconds since 1.1.1970) as per `datetime.timestamp()` function described in [here](https://docs.python.org/3/library/datetime.html#datetime.datetime)
 
-
-### Plotting
-
 ## Command line prompt
-By installing the package from PyPI, you will get the python entry point which you can use in the command line.
+By installing the package from PyPI, you will get the python entry point which you can use in the command line. You can investigate each command with the `--help` tag. e.g. `bva-preprocess-xmx --help`. Mostly you will need only the `bva-preprocess-xml` and potentially `bva-settings-to-csv` commands
 
 BVA xml output preprocessing
 ```bash
-bva-preprocess-xml "path_to_xml" "path_to_output_without_extension"
-```
-
-XML settings to csv output
-```bash
-bva-settings-to-csv "path_to_xml" "path_to_output_without_extension"
-```
-
-Phases times to csv output 
-```bash
-bva-phases-table "path_to_xml" "path_to_output_without_extension"
-```
-
-Measure starts and stop times
-```bash
-bva-measures-start-stop-table "path_to_xml" "path_to_output_without_extension"
+bva-preprocess-xml "path_to_xml" -o/--output "output-prefix"
+bva-settings-to-csv "path_to_xml"-o/--output "output-prefix"
+bva-phases-table "path_to_xml" -o/--output "output-prefix"
+bva-measures-start-stop-table "path_to_xml" -o/--output "output-prefix"
 ```
 
 ### FAQ
 Q: The command line commands are not found.
 
-A: If you are using conda or virtual envs, make sure you are in a correct environment before.
+A: If you are using conda or virtual envs, make sure you are in a correct environment

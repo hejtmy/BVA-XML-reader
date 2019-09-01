@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bvareader",
-    version="0.1.3",
+    version="0.2.0",
     author="Lukáš Hejtmy Hejtmánek",
     author_email="hejtmy@gmail.com",
     description="Package to read and process BVA data from LF Motol",
@@ -19,6 +19,7 @@ setuptools.setup(
       'pandas',
       'numpy>=1.16.0',
       'matplotlib',
+      'Click>=7.0',
       ],
     tests_require=["pytest", ],
     classifiers=[

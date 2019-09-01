@@ -22,7 +22,7 @@ def read_xml_phases(path):
             row.append(float(tps[-1].find('Timestamp').text))
         phase_times.append(row)
         i_phase += 1
-    pd_phases = pd.DataFrame(phase_times, columns=["phase_number", "timestamp_start", 
+    pd_phases = pd.DataFrame(phase_times, columns=["phase_number", "timestamp_start",
                              "timestamp_end", "claimed_length"])
     return(pd_phases)
 
@@ -144,7 +144,7 @@ def real_timestamp(element):
     return(float(dt.timestamp()))
 
 
-# ' Wrapper around 
+# ' Wrapper around
 def save_csv(pd_bva, path, dec_points=4):
     f = '%.'+str(dec_points)+'f'
     pd_bva.to_csv(path, sep=";", index=False, float_format=f)
