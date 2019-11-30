@@ -1,5 +1,5 @@
 from bvareader import reader
-from bvareader import plotter 
+from bvareader import plotter
 from bvareader import preprocessing
 
 pd_bva = reader.read_xml_bva("tests/test_data/new_bva/example_bva.xml")
