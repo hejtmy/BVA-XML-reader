@@ -33,6 +33,6 @@ def read_sync_file(path):
 
 
 # ' Wrapper around
-def save_csv(pd_bva, path, dec_points=4):
+def save_csv(df, path, dec_points=4):
     f = '%.'+str(dec_points)+'f'
-    pd_bva.to_csv(path, sep=";", index=False, float_format=f)
+    df.to_csv(path, sep=";", index=False, float_format=f)
