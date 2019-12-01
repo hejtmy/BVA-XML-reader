@@ -18,5 +18,5 @@ def settings_xml_data_path():
 
 
 @pytest.fixture
-def bva_tr3_data_path():
+def bva_old_data_path():
     return os.path.join('tests', 'test_data', 'old_bva', 'test.TR3')
