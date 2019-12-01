@@ -25,7 +25,16 @@ def test_loading_measure_start(settings_xml_data_path):
 
 
 # TESTING OLD BVA
-def test_loading_tr3(bva_tr3_data_path):
-    blocks = old_reader.read_tr(bva_tr3_data_path)
-    assert len(blocks) == 3
-    assert isinstance(blocks[2], pd.core.frame.DataFrame)
+def test_loading_tr3_position(bva_tr3_data_path):
+    position = old_reader.read_position(bva_tr3_data_path)
+    assert isinstance(position, pd.core.frame.DataFrame)
+
+
+def test_loading_tr3_phases(bva_tr3_data_path):
+    phases = old_reader.read_phases(bva_tr3_data_path)
+    assert isinstance(phases, pd.core.frame.DataFrame)
+
+
+def test_loading_tr3_settings(bva_tr3_data_path):
+    settings = old_reader.read_settings(bva_tr3_data_path)
+    assert isinstance(settings, pd.core.frame.DataFrame)
