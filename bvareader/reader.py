@@ -1,5 +1,23 @@
 import bvareader.new_bva.reader as new_reader
-import bvareader.old_bva.reader as old_reader
+# import bvareader.old_bva.reader as old_reader
+
+
+def read_positions(folder):
+    if old_or_new(folder) == 'old':
+        return None
+    if old_or_new(folder) == 'new':
+        return None
+
+
+def read_sync_times(folder):
+    return None
+
+
+def read_phases(folder):
+    path = get_bva_file(folder)
+    if old_or_new(folder) == 'new':
+        pd_phases = new_reader.read_xml_phases(path)
+    return pd_phases
 
 
 def read_xml_phases(path):
@@ -36,3 +54,13 @@ def read_sync_file(path):
 def save_csv(df, path, dec_points=4):
     f = '%.'+str(dec_points)+'f'
     df.to_csv(path, sep=";", index=False, float_format=f)
+
+
+# '
+def old_or_new(folder):
+    """ returns 'old' or returns 'new' based on the folder contents' """
+    return None
+
+
+def get_bva_file(folder):
+    return None

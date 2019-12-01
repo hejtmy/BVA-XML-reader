@@ -2,6 +2,10 @@ from io import StringIO
 import pandas as pd
 
 
+def read_position(path):
+   return None
+
+
 def read_tr(path):
     # separate it into three distinct parts
     block1_separator = "phase         cue           cueno         laser         startpoint    segments"
