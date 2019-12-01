@@ -29,12 +29,12 @@ setuptools.setup(
       ],
     entry_points={
       'console_scripts': [
-        'bva-preprocess-xml = bvareader.commands:sys_bva_preprocess_xml',
-        'bva-positions-table = bvareader.commands:bva_positions_table',
-        'bva-phases-table = bvareader.commands:bva_phases_table',
-        'bva-measures-start-stop-table = bvareader.commands:bva_measure_start_stop_table',
-        'bva-sync-times-table = bvareader.commands:bva_sync_times_table',
-        'bva-settings-to-csv = bvareader.commands:xml_settings_to_csv',
+        'process-bva = bvareader.commands:process_bva_data',
+        'bva-positions = bvareader.commands:process_bva_positions',
+        'bva-phases = bvareader.commands:process_bva_phases',
+        'bva-measures-start-stop = bvareader.commands:process_bva_measure_start_stop',
+        'bva-sync-times = bvareader.commands:process_bva_sync_times',
+        'xml-settings-to-csv = bvareader.commands:xml_settings_to_csv',
         ]
     }
 )

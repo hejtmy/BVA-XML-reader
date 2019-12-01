@@ -2,7 +2,7 @@ from io import StringIO
 import pandas as pd
 
 # ' The TR3 file comes in three parts - SETTINGS, PHASES and POSITION. We separate the file as per these separating lines and thenread each appropriate text part
-
+LOGGING_FREQUENCY = 25
 POSITION_SEPARATOR = "frame         roomx         roomy         arena angle   arenax        arenay        phase         pausa"
 SETTINGS_SEPARATOR = "phase         cue           cueno         laser         startpoint    segments"
 PHASES_SEPARATOR = "phase         sector        mode          avoid         shape         r             r0            r1            keytonext"
@@ -18,6 +18,14 @@ def read_position(path):
     position = pd.read_fwf(text, header=0)  # reads well formated textw with fixed size but unequal things in each part
     file.close()
     return position
+
+
+def read_sync(path):
+    position = read_position(path)
+    sync = position[position['klavesa'] == 'e']
+    sync['timestamp'] = sync.frame * 1/LOGGING_FREQUENCY
+    sync = sync[['timestamp']]
+    return sync
 
 
 def read_phases(path):

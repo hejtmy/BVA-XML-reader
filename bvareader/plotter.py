@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from bvareader.preprocessing import calculate_perpendicular_cross
+from bvareader.new_bva.preprocessing import calculate_perpendicular_cross
 
 
 def plot_walking(pd_bva):

@@ -30,7 +30,7 @@ def read_xml_sync(path):
     for phase in root.iter('Phase'):
         for sync in phase.iter('SyncEEGAction'):
             times.append(real_timestamp(sync))
-    pd_times = pd.DataFrame(data={'order': list(range(1, len(times)+1)), 'timestamp': times})
+    pd_times = pd.DataFrame(data={'timestamp': times})
     return(pd_times)
 
 

@@ -1,6 +1,6 @@
 import os
 import bvareader.new_bva.reader as new_reader
-# import bvareader.old_bva.reader as old_reader
+import bvareader.old_bva.reader as old_reader
 
 
 def read_positions(path):
@@ -22,7 +22,7 @@ def read_positions(path):
     if old_or_new(path) == 'new':
         pd_bva = new_reader.read_xml_bva(path)
     if old_or_new(path) == 'old':
-        return None
+        pd_bva = old_reader.read_position(path)
     return pd_bva
 
 
@@ -39,14 +39,14 @@ def read_sync_times(path):
     Returns
     -------
     pandas.DataFrame
-        returns pandas Dataframe with timestamps of each given sync time. DataFrame columns differ for 
+        returns pandas Dataframe with timestamps of each given sync time. DataFrame columns differ for
         old and for the new bva
     """
 
     if old_or_new(path) == 'new':
         pd_times = new_reader.read_xml_sync(path)
     if old_or_new(path) == 'old':
-        return None
+        pd_times = old_reader.read_sync(path)
     return(pd_times)
 
 
@@ -69,6 +69,8 @@ def read_phases(path):
 
     if old_or_new(path) == 'new':
         pd_phases = new_reader.read_xml_phases(path)
+    if old_or_new(path) == 'old':
+        pd_phases = old_reader.read_phases(path)
     return pd_phases
 
 
@@ -90,13 +92,6 @@ def read_sync_file(path):
     return(pd_sync)
 
 
-# ' Wrapper around
-def save_csv(df, path, dec_points=4):
-    f = '%.' + str(dec_points) + 'f'
-    df.to_csv(path, sep=";", index=False, float_format=f)
-
-
-# '
 def old_or_new(path):
     # TR3 or TR4 files are the old
     filename, extension = os.path.splitext(path)
