@@ -21,7 +21,7 @@ def process_bva_data(path, output):
 def process_bva_positions(path, output):
     """This script takes given bva xml file and outputs
     preprocessed csv files with positions"""
-    output_path = create_output_path(output) + 'positions'
+    output_path = create_output_path(path, output) + 'positions'
 
     pd_bva = reader.read_positions(path)
     pd_bva2 = prepare_position(pd_bva)
@@ -36,7 +36,7 @@ def process_bva_positions(path, output):
 def process_bva_sync_times(path, output):
     """This script takes given bva xml file and outputs
     preprocessed csv files with sync times"""
-    output_path = create_output_path(output) + 'sync_times.csv'
+    output_path = create_output_path(path, output) + 'sync_times.csv'
     pd_sync = reader.read_sync_times(path)
     reader.save_csv(pd_sync, output_path)
 
@@ -47,7 +47,7 @@ def process_bva_sync_times(path, output):
 def process_bva_phases(path, output):
     """This script takes given bva file and outputs
     preprocessed csv files with phases"""
-    output_path = create_output_path(output) + 'phases.csv'
+    output_path = create_output_path(path, output) + 'phases.csv'
     pd_phases = reader.read_phases(path)
     save_csv(pd_phases, output_path)
 
@@ -58,8 +58,8 @@ def process_bva_phases(path, output):
 def process_bva_measure_start_stop(path, output):
     """This script takes given bva xml file and outputs
     preprocessed csv files with measure starts and stops"""
-    output_path = create_output_path(output) + 'measure_start_stop.csv'
-    pd_start_stop = reader.read_measure_start_stop(path)
+    output_path = create_output_path(path, output) + 'measure_start_stop.csv'
+    pd_start_stop = reader.read_new_measure_start_stop(path)
     save_csv(pd_start_stop, output_path)
 
 
@@ -86,7 +86,7 @@ def bva_prepare(path, output_path):
     pd_phases = reader.read_phases(path)
     if reader.old_or_new(path) == 'new':
         try:
-            pd_start_stop = reader.read_measure_start_stop(path)
+            pd_start_stop = reader.read_new_measure_start_stop(path)
             save_csv(pd_start_stop, output_path + 'measure_start_stop.csv')
         except(Exception):
             print("Could not process start and stop due to non appropriate data")
