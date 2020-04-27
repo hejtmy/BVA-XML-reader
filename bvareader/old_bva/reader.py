@@ -1,7 +1,8 @@
 from io import StringIO
 import pandas as pd
 
-# ' The TR3 file comes in three parts - SETTINGS, PHASES and POSITION. We separate the file as per these separating lines and thenread each appropriate text part
+# ' The TR3 file comes in three parts - SETTINGS, PHASES and POSITION. We separate the file as per these separating
+# ' lines and thenread each appropriate text part
 LOGGING_FREQUENCY = 25
 POSITION_SEPARATOR = "frame         roomx         roomy         arena angle   arenax        arenay        phase         pausa"
 SETTINGS_SEPARATOR = "phase         cue           cueno         laser         startpoint    segments"
@@ -21,9 +22,8 @@ def read_position(path):
 
 
 def read_sync(path):
-    position = read_position(path)
-    sync = position[position['klavesa'] == 'e']
-    sync['timestamp'] = sync.frame * 1/LOGGING_FREQUENCY
+    pd_keys = read_keypresses(path)
+    sync = pd_keys.loc[pd_keys['klavesa'] == 'e']
     sync = sync[['timestamp']]
     return sync
 
@@ -48,3 +48,11 @@ def read_settings(path):
     settings_lines = [lines[x] for x in range(i_block1[0], i_block1[1])]
     settings = pd.read_csv(StringIO(''.join(settings_lines)), header=0, sep='\s+')
     return settings
+
+
+def read_keypresses(path):
+    position = read_position(path)
+    pd_keys = position.loc[position['klavesa'].notna(), ['klavesa', 'frame']]
+    pd_keys['timestamp'] = pd_keys['frame'] * 1/LOGGING_FREQUENCY
+    pd_keys = pd_keys[['klavesa', 'timestamp']]
+    return pd_keys

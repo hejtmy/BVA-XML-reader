@@ -91,6 +91,13 @@ def bva_prepare(path, output_path):
         except(Exception):
             print("Could not process start and stop due to non appropriate data")
             pass
+    if reader.old_or_new(path) == 'old':
+        try:
+            pd_keys = reader.read_keypresses(path)
+            save_csv(pd_keys, output_path + 'keypresses.csv')
+        except(Exception):
+            print("Could not process start and stop due to non appropriate data")
+            pass
     save_csv(pd_bva, output_path + 'positions_unprocessed.csv')
     save_csv(pd_bva_prep, output_path + 'positions_processed.csv')
     save_csv(pd_sync, output_path + 'sync_times.csv')

@@ -74,6 +74,25 @@ def read_phases(path):
     return pd_phases
 
 
+def read_keypresses(path):
+    """Reads keypresses from the TR files.
+
+    Only functions on the old data, as the new data are not bound by keypresses, but events
+    Parameters
+    ----------
+    path : str
+
+    Returns
+    -------
+    pandas.DataFrame
+        returns pandas DataFrame with two columns: key and time
+    """
+    if old_or_new(path) == 'new':
+        raise Exception('Can only be run on old data')
+        return
+    pd_keys = old_reader.read_keypresses(path)
+    return pd_keys
+
 # NEW BVA ONLY
 
 
@@ -93,9 +112,9 @@ def read_sync_file(path):
 
 
 def old_or_new(path):
-    # TR3 or TR4 files are the old
+    # TR1, TR3 or TR4 files are the old
     filename, extension = os.path.splitext(path)
-    if extension in ['.TR3', '.TR4']:
+    if extension in ['.TR1', '.TR3', '.TR4']:
         return 'old'
     if extension in ['.xml']:
         return 'new'
