@@ -23,7 +23,7 @@ def prepare_position(pd_bva):
     if old_or_new(pd_bva) == 'new':
         pd_bva_prep = new_preprocessing.preprocess_bva_data(pd_bva)
     if old_or_new(pd_bva) == 'old':
-        pd_bva_prep = old_preprocessing.preprocess_position(pd_bva) 
+        pd_bva_prep = old_preprocessing.preprocess_position(pd_bva)
     return(pd_bva_prep)
 
 

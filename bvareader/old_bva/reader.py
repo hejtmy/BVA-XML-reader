@@ -17,6 +17,7 @@ def read_position(path):
     position_lines = [lines[x] for x in range(i_position[0], len(lines))]
     text = StringIO(''.join(position_lines))
     position = pd.read_fwf(text, header=0)  # reads well formated textw with fixed size but unequal things in each part
+    position.set_index('frame')
     file.close()
     return position
 

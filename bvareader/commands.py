@@ -80,9 +80,6 @@ def create_output_path(path, output):
 
 
 def bva_prepare(path, output_path):
-    pd_bva = reader.read_positions(path)
-    pd_bva_prep = prepare_position(pd_bva)
-    pd_sync = reader.read_sync_times(path)
     if reader.old_or_new(path) == 'new':
         try:
             pd_phases = reader.read_phases(path)
@@ -103,6 +100,9 @@ def bva_prepare(path, output_path):
         except(Exception):
             print('Could Not process data')
             pass
+    pd_bva = reader.read_positions(path)
     save_csv(pd_bva, output_path + 'positions_unprocessed.csv')
+    pd_bva_prep = prepare_position(pd_bva)
     save_csv(pd_bva_prep, output_path + 'positions_processed.csv')
+    pd_sync = reader.read_sync_times(path)
     save_csv(pd_sync, output_path + 'sync_times.csv')
