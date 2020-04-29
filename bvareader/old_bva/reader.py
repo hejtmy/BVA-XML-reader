@@ -28,31 +28,41 @@ def read_sync(path):
     return sync
 
 
-def read_cues(path):
-    """ Reads cue/laser information from the top of the TR file
+def read_settings(path):
+    """ Reads laser/cues information from the top of the TR file
     
     """
     file = open(path, 'r')
     lines = file.readlines()
     position_head = next((x for x in lines if POSITION_SEPARATOR in x), [None])
     phases_head = next((x for x in lines if PHASES_SEPARATOR in x), [None])
-    i_phases = [lines.index(phases_head), lines.index(position_head)-1]
+    i_phases = [lines.index(phases_head), lines.index(position_head)]
     phases_lines = [lines[x] for x in range(i_phases[0], i_phases[1])]
-    phases = pd.read_csv(StringIO(''.join(phases_lines)), header=0, sep='\\s+')
-    return phases
+    settings = pd.read_csv(StringIO(''.join(phases_lines)), header=0, sep='\\s+')
+    settings['phase'] = range(0, len(settings.index))
+    lasers = read_lasers(path)
+
+    if(len(lasers.index) == len(settings.index)*2):
+        lasers = lasers[['cueno', 'type', 'laser']]
+        lasers = lasers.pivot(index='cueno', columns='type', values='laser')
+        lasers = lasers.rename(columns={'cue': 'cue_laser', 'start': 'start_laser'})
+        settings = settings.merge(lasers, left_on='phase', right_index=True)
+    return settings
 
 
-def read_settings(path):
+def read_lasers(path):
+    """Reads phases settings and combines with laser information
+    """
     file = open(path, 'r')
     lines = file.readlines()
     phases_head = next((x for x in lines if PHASES_SEPARATOR in x), [None])
     settings_head = next((x for x in lines if SETTINGS_SEPARATOR in x), [None])
     i_block1 = [lines.index(settings_head), lines.index(phases_head)]
-    # For some reason unlike the read_phases bottom index this one doesn't require the -1
-    # If the -1 is passed, then the last line was not loading
-    settings_lines = [lines[x] for x in range(i_block1[0], i_block1[1])]
-    settings = pd.read_csv(StringIO(''.join(settings_lines)), header=0, sep='\\s+')
-    return settings
+    lasers_lines = [lines[x] for x in range(i_block1[0], i_block1[1])]
+    lasers = pd.read_csv(StringIO(''.join(lasers_lines)), header=0, sep='\\s+')
+    # potentially validate if there are only cues and starts??
+    lasers['type'] = ["start" if x == 1 else "cue" for x in lasers['startpoint']]
+    return lasers
 
 
 def read_keypresses(path):

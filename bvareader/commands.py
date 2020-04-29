@@ -83,9 +83,10 @@ def bva_prepare(path, output_path):
     pd_bva = reader.read_positions(path)
     pd_bva_prep = prepare_position(pd_bva)
     pd_sync = reader.read_sync_times(path)
-    pd_phases = reader.read_phases(path)
     if reader.old_or_new(path) == 'new':
         try:
+            pd_phases = reader.read_phases(path)
+            save_csv(pd_phases, output_path + 'phases.csv')
             pd_start_stop = reader.read_new_measure_start_stop(path)
             save_csv(pd_start_stop, output_path + 'measure_start_stop.csv')
         except(Exception):
@@ -94,13 +95,14 @@ def bva_prepare(path, output_path):
     if reader.old_or_new(path) == 'old':
         try:
             pd_keys = reader.read_keypresses(path)
-            pd_settings = reader.read_old_settings(path)
             save_csv(pd_keys, output_path + 'keypresses.csv')
+            pd_lasers = reader.read_lasers(path)
+            save_csv(pd_lasers, output_path + 'lasers.csv')
+            pd_settings = reader.read_old_settings(path)
             save_csv(pd_settings, output_path + 'settings.csv')
         except(Exception):
             print('Could Not process data')
             pass
-    save_csv(pd_phases, output_path + 'phases.csv')
     save_csv(pd_bva, output_path + 'positions_unprocessed.csv')
     save_csv(pd_bva_prep, output_path + 'positions_processed.csv')
     save_csv(pd_sync, output_path + 'sync_times.csv')

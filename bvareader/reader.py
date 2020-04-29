@@ -50,29 +50,6 @@ def read_sync_times(path):
     return(pd_times)
 
 
-def read_phases(path):
-    """Reads in phase times data from given file
-
-    This function works for both old and new bva data.
-
-    Parameters
-    ---------
-    path : str
-        path to the bva file (xml for new, TR3 for old)
-
-    Returns
-    -------
-    pandas.DataFrame
-        returns pandas Dataframe with loaded information from the file. The DataFrame columns differ for
-        old and for the new bva
-    """
-
-    if old_or_new(path) == 'new':
-        pd_phases = new_reader.read_xml_phases(path)
-    if old_or_new(path) == 'old':
-        pd_phases = old_reader.read_phases(path)
-    return pd_phases
-
 # OLD BVA ONLY
 
 
@@ -116,7 +93,49 @@ def read_old_settings(path):
     return pd_settings
 
 
+def read_lasers(path):
+    """Reads cue laser infromation from the TR file
+
+    It the processed laser information is part of the settings file if everything goes well, but for clarity, it
+    can be output as a separate file with all information
+    Parameters
+    ----------
+    path : str
+
+    Returns
+    -------
+    pandas.DataFrame
+        returns pandas DataFrame
+    """
+    if old_or_new(path) == 'new':
+        raise Exception('Can only be run on old data')
+        return
+    pd_keys = old_reader.read_lasers(path)
+    return pd_keys
+
 # NEW BVA ONLY
+
+
+def read_phases(path):
+    """Reads in phase times data from given file
+
+    This function works for both old and new bva data.
+
+    Parameters
+    ---------
+    path : str
+        path to the bva file (xml for new, TR3 for old)
+
+    Returns
+    -------
+    pandas.DataFrame
+        returns pandas Dataframe with loaded information from the file. The DataFrame columns differ for
+        old and for the new bva
+    """
+
+    if old_or_new(path) == 'new':
+        pd_phases = new_reader.read_xml_phases(path)
+    return pd_phases
 
 
 def read_new_measure_start_stop(path):
