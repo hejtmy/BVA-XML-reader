@@ -73,6 +73,8 @@ def read_phases(path):
         pd_phases = old_reader.read_phases(path)
     return pd_phases
 
+# OLD BVA ONLY
+
 
 def read_keypresses(path):
     """Reads keypresses from the TR files.
@@ -93,6 +95,27 @@ def read_keypresses(path):
     pd_keys = old_reader.read_keypresses(path)
     return pd_keys
 
+
+def read_old_settings(path):
+    """Reads keypresses from the TR files.
+
+    Only functions on the old data, as the new data are not bound by keypresses, but events
+    Parameters
+    ----------
+    path : str
+
+    Returns
+    -------
+    pandas.DataFrame
+        returns pandas DataFrame with two columns: key and time
+    """
+    if old_or_new(path) == 'new':
+        raise Exception('Can only be run on old data')
+        return
+    pd_settings = old_reader.read_settings(path)
+    return pd_settings
+
+
 # NEW BVA ONLY
 
 
@@ -111,6 +134,7 @@ def read_sync_file(path):
     return(pd_sync)
 
 
+# Helpers
 def old_or_new(path):
     # TR1, TR3 or TR4 files are the old
     filename, extension = os.path.splitext(path)

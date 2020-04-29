@@ -8,7 +8,7 @@ def save_csv(df, path, dec_points=4):
     path : str
         where to save it. including file extension
     dec_points : int
-        how many decimal points should hte floats be rounded to 
+        how many decimal points should hte floats be rounded to
 
     Returns
     -------

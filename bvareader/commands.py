@@ -68,8 +68,8 @@ def process_bva_measure_start_stop(path, output):
 @click.option('-o', '--output', default='settings', help='name of the output files')
 def xml_settings_to_csv(path, output):
     # TODO - issue with comman with single instead of double quotes
-    output_path = create_output_path(output) + '.csv'
-    pd_settings = reader.read_xml_settings(path)
+    output_path = create_output_path(path, output) + 'settings.csv'
+    pd_settings = reader.read_new_settings(path)
     save_csv(pd_settings, output_path)
 
 
@@ -94,11 +94,13 @@ def bva_prepare(path, output_path):
     if reader.old_or_new(path) == 'old':
         try:
             pd_keys = reader.read_keypresses(path)
+            pd_settings = reader.read_old_settings(path)
             save_csv(pd_keys, output_path + 'keypresses.csv')
+            save_csv(pd_settings, output_path + 'settings.csv')
         except(Exception):
-            print("Could not process start and stop due to non appropriate data")
+            print('Could Not process data')
             pass
+    save_csv(pd_phases, output_path + 'phases.csv')
     save_csv(pd_bva, output_path + 'positions_unprocessed.csv')
     save_csv(pd_bva_prep, output_path + 'positions_processed.csv')
     save_csv(pd_sync, output_path + 'sync_times.csv')
-    save_csv(pd_phases, output_path + 'phases.csv')
