@@ -16,8 +16,8 @@ def read_position(path):
     i_position = [lines.index(position_head)]
     position_lines = [lines[x] for x in range(i_position[0], len(lines))]
     text = StringIO(''.join(position_lines))
-    position = pd.read_fwf(text, header=0)  # reads well formated textw with fixed size but unequal things in each part
-    position.set_index('frame')
+    # reads well formated textw with fixed size but unequal things in each part
+    position = pd.read_fwf(text, header=0, widths=[14]*16)
     file.close()
     return position
 
@@ -31,7 +31,6 @@ def read_sync(path):
 
 def read_settings(path):
     """ Reads laser/cues information from the top of the TR file
-    
     """
     file = open(path, 'r')
     lines = file.readlines()

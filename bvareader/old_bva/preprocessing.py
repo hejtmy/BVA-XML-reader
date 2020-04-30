@@ -20,8 +20,8 @@ def preprocess_phases(block):
 
 
 def preprocess_position(block):
-    cols_to_drop = ['arenax', 'arenay', 'arena', 'angle', 'phase', 'pausa', 'frame.1',
-                    'sector', 'sector.1', '0', '-', '0.1', 'klavesa', 'faze', 'repeat', 'goalno']
+    cols_to_drop = ['arenax', 'arenay', 'arena angle', 'phase', 'pausa', 'frame.1',
+                    'sector', 'sector 0 - 0', 'klavesa', 'faze repeat', 'goalno']
     block = block.rename(columns={"roomx": 'position_x', 'roomy': 'position_y', 'casms': 'timestamp'})
     # first recording seems to not be at 0, but at 0.40s
     block['logging_timestamp'] = block.frame * 1/LOGGING_FREQUENCY + 1/LOGGING_FREQUENCY
