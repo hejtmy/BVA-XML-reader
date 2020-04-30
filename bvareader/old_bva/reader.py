@@ -1,5 +1,6 @@
 from io import StringIO
 import pandas as pd
+import bvareader.old_bva.preprocessing as prep
 
 # ' The TR3 file comes in three parts - SETTINGS, PHASES and POSITION. We separate the file as per these separating
 # ' lines and thenread each appropriate text part
@@ -67,7 +68,7 @@ def read_lasers(path):
 
 def read_keypresses(path):
     position = read_position(path)
-    pd_keys = position.loc[position['klavesa'].notna(), ['klavesa', 'frame']]
-    pd_keys['timestamp'] = pd_keys['frame'] * 1/LOGGING_FREQUENCY
-    pd_keys = pd_keys[['klavesa', 'timestamp']]
+    position['logging_timestamp'] = position['frame'] * 1/LOGGING_FREQUENCY + 1/LOGGING_FREQUENCY
+    position = position.rename(columns={'casms': 'timestamp'})
+    pd_keys = position.loc[position['klavesa'].notna(), ['klavesa', 'frame', 'timestamp', 'logging_timestamp']]
     return pd_keys
