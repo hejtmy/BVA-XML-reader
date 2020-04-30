@@ -26,7 +26,7 @@ def read_position(path):
 def read_sync(path):
     pd_keys = read_keypresses(path)
     sync = pd_keys.loc[pd_keys['klavesa'] == 'e']
-    sync = sync[['timestamp']]
+    sync = sync[['timestamp', 'logging_timestamp']]
     return sync
 
 
